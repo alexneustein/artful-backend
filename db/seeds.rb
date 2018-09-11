@@ -24,7 +24,7 @@ def generate_images(type_array)
     json_image = JSON.parse(RestClient.get(imagestring))
     num_images = rand(0..2)
     for i in 0..num_images do
-      image_url_array << json_image["data"][i]["url"]
+      image_url_array << json_image["data"][i]["images"]["original"]["url"]
     end
   end
   return image_url_array

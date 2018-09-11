@@ -7,7 +7,7 @@ class CreateImages < ActiveRecord::Migration[5.2]
       t.string :url
       t.binary :imagedata
       t.string :title
-      t.integer :likes
+      t.integer :likes, :default => 0
 
       t.timestamps
     end

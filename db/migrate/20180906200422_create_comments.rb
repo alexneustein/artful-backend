@@ -3,6 +3,7 @@ class CreateComments < ActiveRecord::Migration[5.2]
     create_table :comments do |t|
       t.text :comment
       t.string :author
+      t.integer :likes, :default => 0
       t.integer :image_id
 
       t.timestamps

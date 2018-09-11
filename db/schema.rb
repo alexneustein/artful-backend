@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2018_09_06_200600) do
     t.string "password"
     t.text "about"
     t.binary "photo"
-    t.integer "likes"
+    t.integer "likes", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2018_09_06_200600) do
   create_table "comments", force: :cascade do |t|
     t.text "comment"
     t.string "author"
+    t.integer "likes", default: 0
     t.integer "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -47,7 +48,7 @@ ActiveRecord::Schema.define(version: 2018_09_06_200600) do
     t.string "url"
     t.binary "imagedata"
     t.string "title"
-    t.integer "likes"
+    t.integer "likes", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
