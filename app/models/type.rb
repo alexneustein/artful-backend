@@ -1,3 +1,4 @@
 class Type < ApplicationRecord
-  has_and_belongs_to_many :artists
+  has_many :artists_types
+  has_many :artists, through: :artists_types
 end

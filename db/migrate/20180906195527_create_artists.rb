@@ -4,7 +4,7 @@ class CreateArtists < ActiveRecord::Migration[5.2]
       t.string :name_first
       t.string :name_last
       t.string :username
-      t.string :password_digest
+      t.string :password
       t.text :about
       t.binary :photo
       t.integer :likes

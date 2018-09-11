@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2018_09_06_200600) do
     t.string "name_first"
     t.string "name_last"
     t.string "username"
-    t.string "password_digest"
+    t.string "password"
     t.text "about"
     t.binary "photo"
     t.integer "likes"
@@ -27,23 +27,24 @@ ActiveRecord::Schema.define(version: 2018_09_06_200600) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "artists_types", id: false, force: :cascade do |t|
-    t.bigint "artist_id", null: false
-    t.bigint "type_id", null: false
-    t.index ["artist_id"], name: "index_artists_types_on_artist_id"
-    t.index ["type_id"], name: "index_artists_types_on_type_id"
+  create_table "artists_types", force: :cascade do |t|
+    t.integer "artist_id"
+    t.integer "type_id"
   end
 
   create_table "comments", force: :cascade do |t|
     t.text "comment"
     t.string "author"
+    t.integer "image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "images", force: :cascade do |t|
+    t.integer "artist_id"
     t.date "image_date"
     t.text "details"
+    t.string "url"
     t.binary "imagedata"
     t.string "title"
     t.integer "likes"
@@ -54,12 +55,13 @@ ActiveRecord::Schema.define(version: 2018_09_06_200600) do
   create_table "messages", force: :cascade do |t|
     t.string "author"
     t.text "message"
+    t.integer "artist_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "types", force: :cascade do |t|
-    t.string "type"
+    t.string "type_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
