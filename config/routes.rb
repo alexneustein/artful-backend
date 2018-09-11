@@ -8,6 +8,8 @@ Rails.application.routes.draw do
 
   patch '/comments/:id/addlike', to: 'comments#addlike'
   patch '/comments/:id/unlike', to: 'comments#unlike'
+  patch '/images/:id/addlike', to: 'images#addlike'
+  patch '/images/:id/unlike', to: 'images#unlike'
 
 
 end

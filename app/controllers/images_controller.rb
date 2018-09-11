@@ -1,5 +1,5 @@
 class ImagesController < ApplicationController
-  before_action :set_image, only: [:show, :update, :destroy]
+  before_action :set_image, only: [:show, :update, :destroy, :addlike, :unlike]
 
   # GET /images
   def index
@@ -29,6 +29,16 @@ class ImagesController < ApplicationController
     else
       render json: @image.errors, status: :unprocessable_entity
     end
+  end
+
+  def addlike
+    @image.likes = @image.likes + 1
+    @image.save
+  end
+
+  def unlike
+    @image.likes = @image.likes - 1
+    @image.save
   end
 
   # DELETE /images/1
