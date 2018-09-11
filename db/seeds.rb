@@ -42,61 +42,61 @@ def generate_tags
   return tag_string
 end
 
-# Type.destroy_all
-# Artist.destroy_all
-# ArtistsType.destroy_all
-# Image.destroy_all
+Type.destroy_all
+Artist.destroy_all
+ArtistsType.destroy_all
+Image.destroy_all
 Comment.destroy_all
-#
-#
-# puts "Creating Types..."
-#
-# Type.create({ type_name: "Animation" })
-# Type.create({ type_name: "Digital Arts" })
-# Type.create({ type_name: "Graphic Design" })
-# Type.create({ type_name: "Hand Crafts" })
-# Type.create({ type_name: "Illustration" })
-# Type.create({ type_name: "Film and Video" })
-# Type.create({ type_name: "Painting" })
-# Type.create({ type_name: "Photography" })
-# Type.create({ type_name: "Sculpture" })
-# Type.create({ type_name: "Visual Arts" })
-#
-# puts "Populating Artists..."
-#
-# num_artists.times do
-#   puts "Populating Artist..."
-#   name_first = Faker::Name.first_name
-#   name_last = Faker::Name.last_name
-#   username = name_first[0] + name_last + rand(1..999).to_s
-#   password = test_pw
-#   abouttext = "Stuff about this artist."
-#   likes = rand(0..999)
-#   artist = Artist.create(name_first: name_first, name_last: name_last, username: username,  password: test_pw, about: abouttext, likes: likes)
-#
-#   puts "Adding Types To Artist..."
-#   type_array = generate_types
-#   artist_id = artist.id
-#   if type_array.length > 0
-#     type_array.each do |type|
-#       ArtistsType.create({ artist_id: artist_id, type_id: type})
-#     end
-#   end
-#
-#   puts "Adding Images to Artist..."
-#   if type_array.length > 0
-#     image_url_array = generate_images(type_array)
-#     if image_url_array.length > 0
-#       image_url_array.each do |url|
-#         image_date = Faker::Date.between(4.years.ago, Date.today)
-#         title = Faker::RickAndMorty.location
-#         details = Faker::Myst.quote
-#         img_likes = rand(0..99)
-#         Image.create({ artist_id: artist_id, image_date: image_date, title: title, likes: img_likes, details: details, url: url})
-#       end
-#     end
-#   end
-# end
+
+
+puts "Creating Types..."
+
+Type.create({ type_name: "Animation" })
+Type.create({ type_name: "Digital Arts" })
+Type.create({ type_name: "Graphic Design" })
+Type.create({ type_name: "Hand Crafts" })
+Type.create({ type_name: "Illustration" })
+Type.create({ type_name: "Film and Video" })
+Type.create({ type_name: "Painting" })
+Type.create({ type_name: "Photography" })
+Type.create({ type_name: "Sculpture" })
+Type.create({ type_name: "Visual Arts" })
+
+puts "Populating Artists..."
+
+num_artists.times do
+  puts "Populating Artist..."
+  name_first = Faker::Name.first_name
+  name_last = Faker::Name.last_name
+  username = name_first[0] + name_last + rand(1..999).to_s
+  password = test_pw
+  abouttext = "Stuff about this artist."
+  likes = rand(0..999)
+  artist = Artist.create(name_first: name_first, name_last: name_last, username: username,  password: test_pw, about: abouttext, likes: likes)
+
+  puts "Adding Types To Artist..."
+  type_array = generate_types
+  artist_id = artist.id
+  if type_array.length > 0
+    type_array.each do |type|
+      ArtistsType.create({ artist_id: artist_id, type_id: type})
+    end
+  end
+
+  puts "Adding Images to Artist..."
+  if type_array.length > 0
+    image_url_array = generate_images(type_array)
+    if image_url_array.length > 0
+      image_url_array.each do |url|
+        image_date = Faker::Date.between(4.years.ago, Date.today)
+        title = Faker::RickAndMorty.location
+        details = Faker::Myst.quote
+        img_likes = rand(0..99)
+        Image.create({ artist_id: artist_id, image_date: image_date, title: title, likes: img_likes, details: details, url: url})
+      end
+    end
+  end
+end
 
 puts "Adding Comments to Images..."
 Image.all.each do |image|
