@@ -6,4 +6,8 @@ Rails.application.routes.draw do
   resources :comments
   resources :messages
 
+  patch '/comments/:id/addlike', to: 'comments#addlike'
+  patch '/comments/:id/unlike', to: 'comments#unlike'
+
+
 end

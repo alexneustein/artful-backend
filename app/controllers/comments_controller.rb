@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :set_comment, only: [:show, :update, :destroy]
+  before_action :set_comment, only: [:show, :update, :destroy, :addlike, :unlike]
 
   # GET /comments
   def index
@@ -30,6 +30,16 @@ class CommentsController < ApplicationController
     else
       render json: @comment.errors, status: :unprocessable_entity
     end
+  end
+
+  def addlike
+    @comment.likes = @comment.likes + 1
+    @comment.save
+  end
+
+  def unlike
+    @comment.likes = @comment.likes - 1
+    @comment.save
   end
 
   # DELETE /comments/1
