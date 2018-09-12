@@ -8,8 +8,13 @@ class ArtistsController < ApplicationController
     render json: @artists
   end
 
+  def indextop
+    @artists = Artist.top_artists(6)
+    render json: @artists
+  end
+
   def show
-    render json: @artist
+    render json: @artist, serializer: ArtistImagesSerializer
   end
 
   # POST /artists

@@ -4,10 +4,6 @@ class ImageSerializer < ActiveModel::Serializer
 
 
 def artist
-    # object.artists.map do |artist|
-    #   ::ProjectSerializer.new(artist).attributes
-    # end
-
     object.artist.full_name
   end
 end

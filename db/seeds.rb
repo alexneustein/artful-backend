@@ -5,10 +5,11 @@ test_pw = "testing"
 
 def generate_types
   type_array = []
+  type_array << Type.all[rand(0..(Type.all.length-1))].id
   Type.all.each do |type|
-    (type_array << type.id) if (rand(0..1) == 1)
+    (type_array << type.id) if (rand(0..3) == 1)
   end
-  return type_array
+  return type_array.uniq
 end
 
 def generate_tags
@@ -29,9 +30,8 @@ ArtistsType.destroy_all
 Image.destroy_all
 Comment.destroy_all
 
-
 puts "Creating Types..."
-
+#
 Type.create({ type_name: "Animation" })
 Type.create({ type_name: "Digital Arts" })
 Type.create({ type_name: "Graphic Design" })
@@ -74,8 +74,8 @@ Artist.all.each do |artist|
 end
 
 puts "Adding Types To Artist..."
-  type_array = generate_types
   Artist.all.each do |artist|
+    type_array = generate_types
     artist_id = artist.id
     if type_array.length > 0
       type_array.each do |type|
