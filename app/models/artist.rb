@@ -1,5 +1,6 @@
 class Artist < ApplicationRecord
   has_many :artists
+  has_many :images
   has_many :messages
   has_many :artists_types
   has_many :types, through: :artists_types
