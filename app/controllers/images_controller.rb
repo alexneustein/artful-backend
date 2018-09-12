@@ -4,12 +4,11 @@ class ImagesController < ApplicationController
   # GET /images
   def index
     @images = Image.all
-
     render json: @images
   end
 
   def show
-    render json: @image
+    render json: @image, serializer: ImageCommentsSerializer
   end
   # POST /images
   def create

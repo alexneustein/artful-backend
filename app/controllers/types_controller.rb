@@ -9,7 +9,7 @@ class TypesController < ApplicationController
   end
 
   def show
-    render json: @type
+    render json: @type, serializer: TypeArtistsSerializer
   end
 
   # POST /types

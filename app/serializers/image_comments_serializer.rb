@@ -1,4 +1,4 @@
-class ImageSerializer < ActiveModel::Serializer
+class ImageCommentsSerializer < ActiveModel::Serializer
   attributes :id, :artist_id, :image_date, :details, :imagedata, :title, :likes, :url
-  belongs_to :artist
+  has_many :comments
 end
