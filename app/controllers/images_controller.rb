@@ -3,8 +3,18 @@ class ImagesController < ApplicationController
 
   # GET /images
   def index
-    @images = Image.all
-    render json: @images
+    @images = Image.paginate(:page => params[:page])
+    @artists = {}
+    @images.each do |image|
+      @artists[image.id] = image.artist.full_name
+    end
+    render json: {
+      images: @images,
+      artists: @artists,
+      page: @images.current_page,
+      pages: @images.total_pages,
+      total: @images.total_entries
+    }
   end
 
   def indextop
