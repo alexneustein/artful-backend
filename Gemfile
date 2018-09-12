@@ -19,6 +19,8 @@ gem 'active_model_serializers'
 gem 'faker'
 gem 'rest-client'
 gem 'json'
+gem 'will_paginate', '~> 3.1.1'
+
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

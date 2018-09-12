@@ -3,9 +3,13 @@ class ArtistsController < ApplicationController
 
   # GET /artists
   def index
-    @artists = Artist.all
-
-    render json: @artists
+    @artists = Artist.paginate(:page => params[:page])
+    render json: {
+      artists: @artists,
+      page: @artists.current_page,
+      pages: @artists.total_pages,
+      total: @artists.total_entries
+      }
   end
 
   def indextop
@@ -51,7 +55,11 @@ class ArtistsController < ApplicationController
     # Only allow a trusted parameter "white list" through.
     def artist_params
       params.require(:artist).permit!
+      params.require(:page).permit!
     end
 
+    def page
+      params[:page] || 1
+    end
 
 end
