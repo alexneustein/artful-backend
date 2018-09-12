@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :comments
   resources :messages
 
+  get '/images-top', to: 'images#indextop'
   patch '/comments/:id/addlike', to: 'comments#addlike'
   patch '/comments/:id/unlike', to: 'comments#unlike'
   patch '/images/:id/addlike', to: 'images#addlike'

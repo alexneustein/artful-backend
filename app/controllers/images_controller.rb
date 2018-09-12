@@ -7,6 +7,11 @@ class ImagesController < ApplicationController
     render json: @images
   end
 
+  def indextop
+    @images = Image.top_images(6)
+    render json: @images
+  end
+
   def show
     render json: @image, serializer: ImageCommentsSerializer
   end
