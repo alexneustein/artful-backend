@@ -6,7 +6,7 @@ class Artist < ApplicationRecord
   has_many :types, through: :artists_types
   has_one_attached :headshot
 
-  self.per_page = 15
+  self.per_page = 10
 
   def full_name
     "#{self.name_first} #{self.name_last}"
