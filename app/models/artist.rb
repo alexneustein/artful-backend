@@ -4,6 +4,7 @@ class Artist < ApplicationRecord
   has_many :messages
   has_many :artists_types
   has_many :types, through: :artists_types
+  has_one_attached :headshot
 
   self.per_page = 15
 

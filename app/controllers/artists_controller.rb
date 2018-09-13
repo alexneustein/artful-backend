@@ -24,7 +24,8 @@ class ArtistsController < ApplicationController
   # POST /artists
   def create
     @artist = Artist.find_or_create_by(artist_params)
-
+    # byebug
+    # Current.artist.headshot.attach(params[:headshot])
     if @artist.save
       render json: @artist, status: :created, location: @artist
     else
