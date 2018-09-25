@@ -28,7 +28,7 @@ class ImagesController < ApplicationController
   # POST /images
   def create
     @image = Image.find_or_create_by(image_params)
-
+    
     if @image.save
       render json: @image, status: :created, location: @image
     else

@@ -2,7 +2,7 @@ class Image < ApplicationRecord
   belongs_to :artist
   has_many :comments
 
-  self.per_page = 15
+  self.per_page = 10
 
   def self.top_images(amt)
     imageArray = Image.all.sort_by {|image| image.likes}
